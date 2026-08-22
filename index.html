@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0d14" />
+  <title>Swuky</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow glow-a"></div>
+  <div class="bg-glow glow-b"></div>
+
+  <header class="topbar">
+    <a class="logo" href="#top" aria-label="Swuky home">
+      <span class="logo-mark">S</span>
+      <span>SWUKY</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#discover">Discover</a>
+      <a href="#create">Create</a>
+      <a href="#safety">Safety</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-secondary" id="loginOpen">Log in</button>
+      <button class="btn btn-primary" id="signupOpen">Sign up</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="pill">A NEW HOME FOR PLAYERS & CREATORS</div>
+        <h1>Build worlds.<br><span>Live inside them.</span></h1>
+        <p class="hero-text">
+          Swuky is a player-first game platform concept built around custom identities,
+          creator-made worlds, fair discovery, and safer social experiences.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-large" id="heroSignup">Create account</button>
+          <a class="btn btn-secondary btn-large" href="#discover">Explore Swuky</a>
+        </div>
+
+        <div class="hero-mini">
+          <span>✦ Custom avatars</span>
+          <span>✦ Creator worlds</span>
+          <span>✦ Safety by design</span>
+        </div>
+      </div>
+
+      <div class="hero-window">
+        <div class="window-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span>swuky.com</span>
+        </div>
+        <div class="window-content">
+          <div class="profile-strip">
+            <div class="avatar-orb">
+              <div class="avatar-head"></div>
+              <div class="avatar-body"></div>
+            </div>
+            <div>
+              <span class="small-label">YOUR SWUKY</span>
+              <strong id="previewName">@player</strong>
+            </div>
+          </div>
+
+          <div class="featured-card">
+            <div class="featured-top">
+              <span class="tag">FEATURED WORLD</span>
+              <span class="online">● 1,284 online</span>
+            </div>
+            <div class="featured-copy">
+              <h3>Pacific City</h3>
+              <p>Own a home. Cruise the coast. Build a business. Choose your life.</p>
+              <button class="mini-button">View world</button>
+            </div>
+          </div>
+
+          <div class="stats-row">
+            <div><strong>01</strong><span>Worlds</span></div>
+            <div><strong>∞</strong><span>Ideas</span></div>
+            <div><strong>Day 1</strong><span>Prototype</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="discover">
+      <div class="section-title">
+        <div>
+          <span class="kicker">DISCOVER</span>
+          <h2>Find your next world.</h2>
+        </div>
+        <button class="btn btn-secondary">Browse all</button>
+      </div>
+
+      <div class="world-grid">
+        <article class="world-card pacific">
+          <div class="world-overlay">
+            <span class="tag">SWUKY ORIGINAL</span>
+            <h3>Pacific City</h3>
+            <p>Coastal open-world life simulator.</p>
+            <div class="world-meta"><span>Open World</span><span>Driving</span><span>Social</span></div>
+          </div>
+        </article>
+
+        <article class="world-card neon">
+          <div class="world-overlay">
+            <span class="tag">CONCEPT</span>
+            <h3>Neon Run</h3>
+            <p>Fast competitive city racing.</p>
+            <div class="world-meta"><span>Racing</span><span>Multiplayer</span></div>
+          </div>
+        </article>
+
+        <article class="world-card island">
+          <div class="world-overlay">
+            <span class="tag">CONCEPT</span>
+            <h3>Drift Isles</h3>
+            <p>Explore, build and survive together.</p>
+            <div class="world-meta"><span>Adventure</span><span>Co-op</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell section create-layout" id="create">
+      <div class="creator-card">
+        <span class="kicker">FOR CREATORS</span>
+        <h2>Your world deserves an audience.</h2>
+        <p>
+          The long-term Swuky vision includes creator publishing, analytics, community tools,
+          monetization, moderation tools, and a dedicated creation pipeline.
+        </p>
+        <button class="btn btn-primary">Creator dashboard</button>
+      </div>
+
+      <div class="feature-stack">
+        <div class="feature-item">
+          <span class="feature-icon">◇</span>
+          <div><strong>Fair discovery</strong><p>Help great worlds get found without forcing creators into gimmicks.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">◎</span>
+          <div><strong>Better economics</strong><p>Build a creator system that rewards sustainable, high-quality games.</p></div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <div><strong>Real identity</strong><p>Profiles, avatars, achievements and communities players can make their own.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="safety">
+      <div class="safety-banner">
+        <span class="kicker">SAFETY BY DESIGN</span>
+        <h2>Trust should be part of the engine.</h2>
+        <p>
+          Swuky can be designed around age-aware experiences, privacy-first defaults,
+          strong reporting, transparent moderation, parental tools, and safer communication.
+        </p>
+        <div class="safety-points">
+          <span>Age-aware experiences</span>
+          <span>Transparent moderation</span>
+          <span>Privacy-first defaults</span>
+          <span>Parent controls</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div class="logo footer-logo">
+      <span class="logo-mark">S</span>
+      <span>SWUKY</span>
+    </div>
+    <span>Prototype v0.1</span>
+  </footer>
+
+  <div class="modal hidden" id="signupModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" data-close="signupModal">×</button>
+      <span class="kicker">JOIN SWUKY</span>
+      <h2>Create your account</h2>
+      <p class="modal-note">Prototype only. No password is stored or sent anywhere.</p>
+      <form id="signupForm">
+        <label>Username
+          <input id="username" maxlength="18" placeholder="Choose a username" required />
+        </label>
+        <label>Email
+          <input type="email" placeholder="you@example.com" required />
+        </label>
+        <label>Password
+          <input type="password" minlength="8" placeholder="8+ characters" required />
+        </label>
+        <button class="btn btn-primary btn-large full" type="submit">Create Swuky account</button>
+      </form>
+      <div class="success hidden" id="signupSuccess">
+        <strong>Prototype account created ✓</strong>
+        <p>Next step: connect Swuky to secure authentication and a real database.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="loginModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" data-close="loginModal">×</button>
+      <span class="kicker">WELCOME BACK</span>
+      <h2>Log in to Swuky</h2>
+      <p class="modal-note">Prototype UI only.</p>
+      <form>
+        <label>Email or username
+          <input placeholder="Email or username" />
+        </label>
+        <label>Password
+          <input type="password" placeholder="Password" />
+        </label>
+        <button class="btn btn-primary btn-large full" type="button">Log in</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
