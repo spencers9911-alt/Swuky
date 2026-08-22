@@ -219,6 +219,7 @@ async function refreshAuthState() {
 
   profileUsername.textContent = '@' + username;
   profileDisplayName.textContent = displayName;
+  await loadAndApplySavedAvatar(session.user.id);
 
   if (profile?.created_at) {
     const d = new Date(profile.created_at);
@@ -324,6 +325,7 @@ document.getElementById('saveAvatarBtn').addEventListener('click', async () => {
 
     if (error) throw error;
 
+    applyProfileAvatar(avatar_config);
     showMessage(avatarMessage, 'Avatar saved to your Swuky account.', 'success');
     avatarMessage.classList.remove('hidden');
   } catch (err) {
@@ -334,3 +336,41 @@ document.getElementById('saveAvatarBtn').addEventListener('click', async () => {
     btn.textContent = 'Save avatar';
   }
 });
+
+
+function applyProfileAvatar(config = {}) {
+  const skin = config.skin || '#f1c7a0';
+  const hair = config.hair || 'dark';
+  const outfit = config.outfit || '#5368ff';
+  const coreShape = config.coreShape || 'diamond';
+  const coreColor = config.coreColor || '#78ebff';
+
+  const pHead = document.getElementById('profileHead');
+  if (!pHead) return;
+
+  pHead.style.background = skin;
+  document.querySelectorAll('.profile-arm').forEach(el => el.style.background = skin);
+  document.getElementById('profileHair').style.background = hairColors[hair] || hairColors.dark;
+  document.getElementById('profileTorso').style.background = outfit;
+
+  const pCore = document.getElementById('profileCore');
+  pCore.style.background = coreColor;
+  pCore.style.boxShadow = `0 0 18px ${coreColor}`;
+  pCore.style.borderRadius = coreShape === 'circle' ? '50%' : '4px';
+  pCore.style.transform = coreShape === 'diamond' ? 'rotate(45deg)' : 'none';
+}
+
+async function loadAndApplySavedAvatar(userId) {
+  const { data, error } = await supabaseClient
+    .from('profiles')
+    .select('avatar_config')
+    .eq('id', userId)
+    .single();
+
+  if (error) {
+    console.error('Avatar load error:', error);
+    return;
+  }
+
+  applyProfileAvatar(data?.avatar_config || {});
+}
