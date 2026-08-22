@@ -235,3 +235,102 @@ supabaseClient.auth.onAuthStateChange(() => {
 });
 
 refreshAuthState();
+
+const avatarModal = document.getElementById('avatarModal');
+const customizeAvatarBtn = document.getElementById('customizeAvatarBtn');
+const avatarMessage = document.getElementById('avatarMessage');
+
+const avatarSkin = document.getElementById('avatarSkin');
+const avatarHair = document.getElementById('avatarHair');
+const avatarOutfit = document.getElementById('avatarOutfit');
+const avatarCoreShape = document.getElementById('avatarCoreShape');
+const avatarCoreColor = document.getElementById('avatarCoreColor');
+
+const hairColors = {
+  dark: '#171c25',
+  brown: '#633f2b',
+  blonde: '#d7ad5a',
+  white: '#dbe4ed'
+};
+
+function applyAvatarPreview(config = {}) {
+  const skin = config.skin || avatarSkin.value;
+  const hair = config.hair || avatarHair.value;
+  const outfit = config.outfit || avatarOutfit.value;
+  const coreShape = config.coreShape || avatarCoreShape.value;
+  const coreColor = config.coreColor || avatarCoreColor.value;
+
+  document.getElementById('v1Head').style.background = skin;
+  document.querySelectorAll('.v1-arm').forEach(el => el.style.background = skin);
+  document.getElementById('v1Hair').style.background = hairColors[hair] || hairColors.dark;
+  document.getElementById('v1Torso').style.background = outfit;
+
+  const core = document.getElementById('v1Core');
+  core.style.background = coreColor;
+  core.style.boxShadow = `0 0 24px ${coreColor}`;
+  core.style.borderRadius = coreShape === 'circle' ? '50%' : coreShape === 'square' ? '5px' : '5px';
+  core.style.transform = coreShape === 'diamond' ? 'rotate(45deg)' : 'none';
+}
+
+[avatarSkin, avatarHair, avatarOutfit, avatarCoreShape, avatarCoreColor].forEach(el => {
+  el.addEventListener('change', () => applyAvatarPreview());
+});
+
+customizeAvatarBtn.addEventListener('click', async () => {
+  hideMessage(avatarMessage);
+  const { data: { user } } = await supabaseClient.auth.getUser();
+  if (!user) return;
+
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('avatar_config')
+    .eq('id', user.id)
+    .single();
+
+  const cfg = data?.avatar_config || {};
+  if (cfg.skin) avatarSkin.value = cfg.skin;
+  if (cfg.hair) avatarHair.value = cfg.hair;
+  if (cfg.outfit) avatarOutfit.value = cfg.outfit;
+  if (cfg.coreShape) avatarCoreShape.value = cfg.coreShape;
+  if (cfg.coreColor) avatarCoreColor.value = cfg.coreColor;
+
+  applyAvatarPreview(cfg);
+  openModal(avatarModal);
+});
+
+document.getElementById('saveAvatarBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('saveAvatarBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+  hideMessage(avatarMessage);
+
+  try {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (!user) throw new Error('You need to be logged in.');
+
+    const avatar_config = {
+      version: 1,
+      skin: avatarSkin.value,
+      hair: avatarHair.value,
+      outfit: avatarOutfit.value,
+      coreShape: avatarCoreShape.value,
+      coreColor: avatarCoreColor.value
+    };
+
+    const { error } = await supabaseClient
+      .from('profiles')
+      .update({ avatar_config })
+      .eq('id', user.id);
+
+    if (error) throw error;
+
+    showMessage(avatarMessage, 'Avatar saved to your Swuky account.', 'success');
+    avatarMessage.classList.remove('hidden');
+  } catch (err) {
+    showMessage(avatarMessage, err.message || 'Could not save avatar.', 'error');
+    avatarMessage.classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save avatar';
+  }
+});

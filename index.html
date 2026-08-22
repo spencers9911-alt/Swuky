@@ -207,6 +207,7 @@
           <span class="eyebrow">YOUR PROFILE</span>
           <h2 id="profileUsername">@player</h2>
           <p id="profileDisplayName">Swuky Player</p>
+          <button class="btn btn-primary" id="customizeAvatarBtn">Customize Avatar</button>
           <div class="profile-meta">
             <div><span>Joined</span><strong id="profileJoined">—</strong></div>
             <div><span>Worlds</span><strong>0</strong></div>
@@ -257,6 +258,84 @@
       </form>
 
       <div class="form-message hidden" id="signupMessage"></div>
+    </div>
+  </div>
+
+
+  <div class="modal hidden" id="avatarModal">
+    <div class="modal-card avatar-editor-card">
+      <button class="close-btn" data-close="avatarModal">×</button>
+      <span class="eyebrow">SWUKY AVATAR LAB</span>
+      <h2>Build your Swuky</h2>
+      <p class="modal-note">V1 saves these choices directly to your account.</p>
+
+      <div class="avatar-editor-grid">
+        <div class="editor-preview">
+          <div class="swuky-v1" id="editorAvatar">
+            <div class="v1-head" id="v1Head">
+              <div class="v1-hair" id="v1Hair"></div>
+              <div class="v1-eye e1"></div><div class="v1-eye e2"></div>
+              <div class="v1-mouth"></div>
+            </div>
+            <div class="v1-torso" id="v1Torso">
+              <div class="v1-core" id="v1Core"></div>
+            </div>
+            <div class="v1-arm a1"></div><div class="v1-arm a2"></div>
+            <div class="v1-leg l1"></div><div class="v1-leg l2"></div>
+            <div class="v1-shoe s1"></div><div class="v1-shoe s2"></div>
+          </div>
+          <strong class="preview-label">SWUKY V1</strong>
+        </div>
+
+        <div class="editor-controls">
+          <label>Skin tone
+            <select id="avatarSkin">
+              <option value="#f1c7a0">Warm</option>
+              <option value="#d8a176">Tan</option>
+              <option value="#a96f4d">Deep tan</option>
+              <option value="#75472f">Deep</option>
+            </select>
+          </label>
+
+          <label>Hair
+            <select id="avatarHair">
+              <option value="dark">Midnight</option>
+              <option value="brown">Brown</option>
+              <option value="blonde">Blonde</option>
+              <option value="white">White</option>
+            </select>
+          </label>
+
+          <label>Outfit
+            <select id="avatarOutfit">
+              <option value="#5368ff">Swuky Blue</option>
+              <option value="#171c25">Night</option>
+              <option value="#6b35b5">Violet</option>
+              <option value="#23704f">Forest</option>
+            </select>
+          </label>
+
+          <label>Core shape
+            <select id="avatarCoreShape">
+              <option value="diamond">Diamond</option>
+              <option value="circle">Circle</option>
+              <option value="square">Square</option>
+            </select>
+          </label>
+
+          <label>Core glow
+            <select id="avatarCoreColor">
+              <option value="#78ebff">Cyan</option>
+              <option value="#9a78ff">Violet</option>
+              <option value="#7dffc1">Mint</option>
+              <option value="#ffb75e">Solar</option>
+            </select>
+          </label>
+
+          <button class="btn btn-primary btn-large full" id="saveAvatarBtn">Save avatar</button>
+          <div class="form-message hidden" id="avatarMessage"></div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -246,3 +246,60 @@ input:focus{border-color:#64e6ff}
   .profile-meta{justify-content:center}
   .user-area #logoutBtn{display:none}
 }
+
+select{
+  width:100%;margin-top:7px;background:#090f17;color:#fff;
+  border:1px solid var(--line);border-radius:11px;padding:13px 14px;outline:none
+}
+.avatar-editor-card{width:min(760px,100%)}
+.avatar-editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+.editor-preview{
+  min-height:430px;border:1px solid var(--line);border-radius:20px;
+  display:grid;place-items:center;background:
+  radial-gradient(circle at 50% 40%,rgba(104,231,255,.12),transparent 42%),#0a1018;
+  position:relative
+}
+.preview-label{position:absolute;bottom:18px;font-size:11px;letter-spacing:.18em;color:#75869a}
+.swuky-v1{width:210px;height:310px;position:relative}
+.v1-head{
+  position:absolute;width:92px;height:82px;left:59px;top:8px;
+  border-radius:27px 27px 23px 23px;background:#f1c7a0;z-index:5;
+  box-shadow:inset 0 -6px 0 rgba(0,0,0,.05)
+}
+.v1-hair{
+  position:absolute;left:0;top:-8px;width:92px;height:30px;border-radius:28px 28px 10px 10px;
+  background:#171c25;transform:skewX(-8deg)
+}
+.v1-eye{position:absolute;top:40px;width:7px;height:10px;border-radius:50%;background:#12161c}
+.v1-eye.e1{left:27px}.v1-eye.e2{right:27px}
+.v1-mouth{
+  position:absolute;left:39px;top:61px;width:16px;height:7px;border-bottom:3px solid #222;
+  border-radius:50%
+}
+.v1-torso{
+  position:absolute;left:48px;top:91px;width:114px;height:100px;
+  background:#5368ff;clip-path:polygon(12% 0,88% 0,100% 90%,82% 100%,18% 100%,0 90%);
+  border-radius:18px;z-index:3
+}
+.v1-core{
+  position:absolute;width:25px;height:25px;left:45px;top:30px;
+  background:#78ebff;transform:rotate(45deg);border-radius:5px;
+  box-shadow:0 0 24px #78ebff
+}
+.v1-arm{
+  position:absolute;top:103px;width:34px;height:104px;border-radius:18px;background:#f1c7a0;z-index:2
+}
+.v1-arm.a1{left:22px;transform:rotate(5deg)}.v1-arm.a2{right:22px;transform:rotate(-5deg)}
+.v1-leg{
+  position:absolute;top:184px;width:45px;height:94px;background:#1b2330;border-radius:15px;z-index:1
+}
+.v1-leg.l1{left:55px}.v1-leg.l2{right:55px}
+.v1-shoe{
+  position:absolute;top:262px;width:57px;height:35px;background:#e7edf5;border-radius:14px 18px 12px 12px;z-index:4
+}
+.v1-shoe.s1{left:44px}.v1-shoe.s2{right:44px}
+.editor-controls label{margin-top:0;margin-bottom:13px}
+@media(max-width:700px){
+  .avatar-editor-grid{grid-template-columns:1fr}
+  .editor-preview{min-height:360px}
+}
